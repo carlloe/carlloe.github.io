@@ -14,5 +14,11 @@
         game.load.image('kennedi', './asset/collectable/kennedi-head.png');
         game.load.image('max', './asset/collectable/max-head.png');
         game.load.atlas('halle', './asset/halle/phaser-json-array/halle.png', './asset/halle/phaser-json-array/halle.json');
+        game.load.image('battery', './asset/collectable/battery.png');
+        game.load.image('blueBattery', './asset/collectable/batteryBlue.png');
+        game.load.image('bolts', './asset/collectable/bolts.png');
+        game.load.image('gear', './asset/collectable/gear.png');
+        game.load.image('wrench', './asset/collectable/wrench.png');
+        game.load.image('screw', './asset/collectable/screw.png');
     };
 })(window);
