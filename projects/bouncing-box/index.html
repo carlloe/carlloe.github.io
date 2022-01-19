@@ -74,7 +74,7 @@
 			var positionY = 0;
 			var speedY = 10;
 			var boardHeight = jQuery(window).height();
-			var randNum = Math.random() * boardWidth; 
+			var randNum;
 			var randNumber = Math.random() * boardHeight; 
 
 			/* 
@@ -106,7 +106,7 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = randNum;
+				positionX = Math.random() * boardWidth; 
 				positionY = randNumber;
 				
 				
