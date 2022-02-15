@@ -68,7 +68,7 @@ var init = function (window) {
 
             // TODO 9 : Iterate over the array
            
-            for (var k = 0; k < circles.length; k++) {
+            for (var k = 0; k < circles.length; k++) { //this iteration allows me to call 100 circles without having to call in each one individually, and it keeps them moving
                 var eachCircle = circles[k];
                 physikz.updatePosition(eachCircle);
                 game.checkCirclePosition(eachCircle);
