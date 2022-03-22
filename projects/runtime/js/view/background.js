@@ -27,6 +27,8 @@ var background = function (window) {
         
         // ANIMATION VARIABLES HERE:
         
+        var tree;
+        var buildings = [];
      
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
@@ -36,17 +38,43 @@ var background = function (window) {
             // TODO: 2 - Part 2
             // this fills the background with a obnoxious yellow
             // you should modify this to suit your game
-            var backgroundFill = draw.rect(canvasWidth,canvasHeight,'yellow');
-            background.addChild(backgroundFill);
+            var backgroundFill = draw.rect(canvasWidth,groundY,'lavender');//creates a variable callsed backgroundFill that will create a background color for the game
+            background.addChild(backgroundFill);//adds background
             
             // TODO: 3 - Add a moon and starfield
             
+            var moon = draw.bitmap('img/moon.png');//holds image of moon
+            moon.x = 1300;//holds the x value (left to right)
+            moon.y = 10;//hold the y value (up and down)
+            moon.scaleX = 0.8;//changes x scale of the moon
+            moon.scaleY = 0.8;//changes y scale of the moon 
+            background.addChild(moon);//adds moon to the background
+
+            for(var i = 0; i <= 100; i++){
+                var circle = draw.circle(4,'LightYellow','LightGray',2);
+                circle.x = canvasWidth*Math.random();//creates a random x position within the canvas width for the circle
+                circle.y = groundY*Math.random();//creates a random y position within the canvas width for the circle
+                background.addChild(circle);//add the circles to the background
+            }
             
-            // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
             
+            // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why? //so that the tree is in front of the buildings
+            //everytime this loops runs it creates a building with an x and y value and pushes it to the buildings array
+            for(var i=0;i<5;++i) {
+                var buildingHeight = 300*Math.random();
+                var building = draw.rect(75,buildingHeight,'lightBlue','Black',1);//declares a variable called building which will hold each building
+                building.x = 600 + 200*i;//adds 200 pixels to the x value everytime loop runs 
+                building.y = groundY-buildingHeight;//sets the buildings y position subtracting the height of the building from groundY
+                background.addChild(building);//adds building to background
+                buildings.push(building);//push the buildings data to the buildings array and store it as an index 
+            }
             
             // TODO 4: Part 1 - Add a tree
             
+            tree = draw.bitmap('img/tree.png');//holds the image of the tree
+            tree.x = 600;//changes the x position of the tree
+            tree.y = 230;//changes the y position of the tree
+            background.addChild(tree);//adds the tree to the background 
             
         } // end of render function - DO NOT DELETE
         
@@ -61,9 +89,22 @@ var background = function (window) {
             
             // TODO 4: Part 2 - Move the tree!
             
+            tree.x = tree.x - 1;//takes the current value of tree.x and subtracts 1 pixel/60 seconds
+
+            if(tree.x < -200) {
+                tree.x = canvasWidth;
+            }
+            
             
             // TODO 5: Part 2 - Parallax
             
+            for (var i = 0; i < buildings.length; i++) {
+                 buildings[i].x = buildings[i].x - 0.5;
+            
+                 if(buildings[i].x < -200) {
+                    buildings[i].x = canvasWidth;
+                }
+            }
 
         } // end of update function - DO NOT DELETE
         
