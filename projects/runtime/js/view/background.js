@@ -18,8 +18,8 @@ var background = function (window) {
         }
         
         // useful variables
-        var canvasWidth = app.canvas.width;
-        var canvasHeight = app.canvas.height;
+        var canvasWidth = app.canvas.width; //variable finding the width of the canvas
+        var canvasHeight = app.canvas.height; //variable finding the height of the canvas 
         var groundY = ground.y;
         
         // container which will be returned
@@ -27,8 +27,8 @@ var background = function (window) {
         
         // ANIMATION VARIABLES HERE:
         
-        var tree;
-        var buildings = [];
+        var tree; //holds the variable tree
+        var buildings = []; //holds an empty array called buildings
      
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once

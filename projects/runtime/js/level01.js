@@ -75,7 +75,7 @@ var level01 = function (window) {
             sawBladeHitZone.rotationalVelocity = 10; //rotates the sawblade 10 pixels 
         }
 
-        function createEnemy(x,y){
+        function createEnemy(x,y){ //this function creates enemies
             var enemy = game.createGameItem('enemy',25); //creates the enemy game item and stores it in the varibale enemy
             var redSquare = draw.bitmap("img/bat.png"); //draws a bat and stores it in varibale redSquare 
             redSquare.x = -118; //align square x position 
