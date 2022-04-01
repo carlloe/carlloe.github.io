@@ -16,22 +16,45 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY - 50},
-                { "type": "sawblade", "x": 800, "y": groundY - 50},
-                { "type": "sawblade", "x": 950, "y": groundY - 50},
+                { "type": "sawblade", "x": 500, "y": groundY - 30},
+                { "type": "sawblade", "x": 800, "y": groundY -120},
+                { "type": "sawblade", "x": 1000, "y": groundY - 30},
+                { "type": "sawblade", "x": 1300, "y": groundY - 120},
+                { "type": "sawblade", "x": 2400, "y": groundY - 30},
+                { "type": "sawblade", "x": 2200, "y": groundY - 120},
+                { "type": "sawblade", "x": 2600, "y": groundY - 120},
+                { "type": "sawblade", "x": 3500, "y": groundY - 120},
+                { "type": "sawblade", "x": 3800, "y": groundY - 120},
+                { "type": "sawblade", "x": 4000, "y": groundY - 120},
+                { "type": "sawblade", "x": 4800, "y": groundY - 120},
+                { "type": "sawblade", "x": 5000, "y": groundY - 30},
+                { "type": "sawblade", "x": 5500, "y": groundY - 30},
+                { "type": "sawblade", "x": 5700, "y": groundY - 120},
+                { "type": "sawblade", "x": 5900, "y": groundY - 120},
 
-                { "type": "enemy", "x": 300, "y": groundY - 50},
-                { "type": "enemy", "x": 800, "y": groundY - 50},
-                { "type": "enemy", "x": 950, "y": groundY - 50},
+                { "type": "spike", "x": 1500, "y": groundY - 20},
+                { "type": "spike", "x": 3200, "y": groundY - 20},
+                { "type": "spike", "x": 3000, "y": groundY - 20},                
+                { "type": "spike", "x": 6200, "y": groundY - 20},
+                { "type": "spike", "x": 4200, "y": groundY - 20},
+                { "type": "spike", "x": 4600, "y": groundY - 20},
 
-                { "type": "reward", "x": 600, "y": groundY - 50},
-                { "type": "reward", "x": 900, "y": groundY - 50},
-                { "type": "reward", "x": 1000, "y": groundY - 50},
+                { "type": "enemy", "x": 600, "y": groundY - 30},
+                { "type": "enemy", "x": 1500, "y": groundY - 40},
+                { "type": "enemy", "x": 2000, "y": groundY - 50},
+                { "type": "enemy", "x": 2400, "y": groundY - 60},
+                { "type": "enemy", "x": 2800, "y": groundY - 30},
+                { "type": "enemy", "x": 3400, "y": groundY - 60},
+
+
+                { "type": "reward", "x": 2600, "y": groundY - 50},
+                { "type": "reward", "x": 1800, "y": groundY - 30},
+                { "type": "reward", "x": 1000, "y": groundY - 200},
             ]
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(true);
+        game.setDebugMode(false);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
@@ -39,7 +62,7 @@ var level01 = function (window) {
     
         function createSawBlade(x, y){ //this function creates sawblades in the game
             var hitZoneSize = 25; //creates the size of the hitzone
-            var damageFromObstacle = 10; //how much damage the objext inflicts
+            var damageFromObstacle = 20; //how much damage the objext inflicts
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle
             sawBladeHitZone.x = x; //x value of the hitzone
             sawBladeHitZone.y = y; //y vaulue of the hitzone
@@ -57,7 +80,7 @@ var level01 = function (window) {
             var redSquare = draw.bitmap("img/bat.png"); //draws a bat and stores it in varibale redSquare 
             redSquare.x = -118; //align square x position 
             redSquare.y = -65; //align square y position 
-            enemy.addChild(redSquare);
+            enemy.addChild(redSquare);//adds the image into the game 
             enemy.scaleX = 0.5 //changes the x scale of the enemy
             enemy.scaleY = 0.5; //changes the y scale of the enemy 
 
@@ -70,7 +93,7 @@ var level01 = function (window) {
             //this function dectects if the enemy collides with hallie and executes health decrease
             enemy.onPlayerCollision = function() {
                 game.changeIntegrity(-50) //decreases your health
-                console.log('The enemy has hit Halle');
+                console.log('The enemy has hit Halle'); //prints to console log that the enemy hit halle
             };
 
             //this function detects if the projectile collides with the enemy and it will increase the score 
@@ -85,8 +108,8 @@ var level01 = function (window) {
             blueSquare.x = -130; //align square x position 
             blueSquare.y = -130; //align square y position 
             reward.addChild(blueSquare);
-            reward.scaleX = 0.2
-            reward.scaleY = 0.2
+            reward.scaleX = 0.2 //changes the x scale of the reward
+            reward.scaleY = 0.2 //changes the y scale of the reward
 
             reward.x = x; //determines x position of the reward
             reward.y = y; //changes the y position of the reward minus 50 pixels of groundY
@@ -105,9 +128,28 @@ var level01 = function (window) {
                 game.increaseScore(10); //increases game score
                 reward.shrink(); //makes the reward shrink whenever shot
             };
-        };      
+        };
 
-            for(var i = 0; i < levelData.gameItems.length; i++){
+            function createSpike(x, y){ //this function creates spikes in the game
+                var hitZoneSize = 25; //creates the size of the hitzone
+                var damageFromObstacle = 15; //how much damage the objext inflicts
+                var spikeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle
+                spikeHitZone.x = x; //x value of the hitzone
+                spikeHitZone.y = y; //y vaulue of the hitzone
+                game.addGameItem(spikeHitZone);  //adds the hitzone to the game 
+                
+                var obstacleImage = draw.bitmap('img/spikes.png'); //draws the image and stores it in the variable obstacleImage
+                spikeHitZone.addChild(obstacleImage);  //adds the image to the hitzone so we can see it 
+                obstacleImage.x = -30 //lines up the x of the image with the hitzone
+                obstacleImage.y = -40 //lines up the y of the image with the hitzone
+                spikeHitZone.rotationalVelocity = 0; //rotates the spikes 0 pixels
+                obstacleImage.scaleX = 0.2;//changes the x scale of the spikes
+                obstacleImage.scaleY = 0.2; //changes the y scale of the spikes
+            }
+
+            
+
+            for(var i = 0; i < levelData.gameItems.length; i++){ //A loop that is iterating to creat sawblades, enemies, and rewards
                var gameItem = levelData.gameItems[i];
 
                if (gameItem.type === "sawblade"){ //detects if sawblade was called
@@ -119,6 +161,9 @@ var level01 = function (window) {
                if (gameItem.type === "reward"){ //detects if reward was called
                    createReward(gameItem.x, gameItem.y) //creates reward whenever that gameItem.type is used
                 }
+                if (gameItem.type === "spike"){ //detects if spikes was called
+                    createSpike(gameItem.x, gameItem.y) //creates spikes whenever that gameItem.type is used
+                 }
             }
         // DO NOT EDIT CODE BELOW HERE
     }

@@ -56,8 +56,8 @@
             }
         }
 
-        hud.setIntegrity(100);
-        hud.updateOf(10000);
+        hud.setIntegrity(100);//sets health fo the hud
+        hud.updateOf(90);//sets the score for the hud
         
         /* Create a new game item of the given type and hit radius. Each game
            item is a empty createjs container. To draw something for a game item
