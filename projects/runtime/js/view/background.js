@@ -59,14 +59,14 @@ var background = function (window) {
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why? //so that the tree is in front of the buildings
             //everytime this loops runs it creates a building with an x and y value and pushes it to the buildings array
-            for(var i=0;i<5;++i) {
+            /*for(var i=0;i<5;++i) {
                 var buildingHeight = 300*Math.random(); //creates random building heights
                 var building = draw.rect(75,buildingHeight,'lightBlue','Black',1);//declares a variable called building which will hold each building
                 building.x = 600 + 200*i;//adds 200 pixels to the x value everytime loop runs 
                 building.y = groundY-buildingHeight;//sets the buildings y position subtracting the height of the building from groundY
                 background.addChild(building);//adds building to background
                 buildings.push(building);//push the buildings data to the buildings array and store it as an index 
-            } 
+            } */
             
             // TODO 4: Part 1 - Add a tree
             
